@@ -29,13 +29,15 @@
 
 (function() {
 	var listeners = {};
-	
-	function listen(type, callback) {
-		if ( false === type in listeners ) {
-			listeners[type] = [];
-		}
-		listeners[type].push(callback);
-	}
+
+	QUnit.extend( QUnit, {
+	    on: function(type, callback) {
+    		if ( false === type in listeners ) {
+    			listeners[type] = [];
+    		}
+    		listeners[type].push(callback);
+    	}
+	});
 	
 	function dispatch(type, data) {
 		if ( type in listeners ) {
@@ -79,7 +81,5 @@
 	QUnit.done = function(o) {
 		oldDone.call(QUnit, o);
 		dispatch('done', o);
-	};
-	
-	QUnit.on = listen;
+	};	
 }());
