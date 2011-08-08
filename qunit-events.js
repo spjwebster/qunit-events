@@ -47,6 +47,12 @@
 		}
 	}
 	
+	var oldLog = QUnit.log;
+	QUnit.log = function(o) {
+	    oldLog.call(QUnit, o);
+	    dispatch('log', o);
+	}
+	
 	var oldTestStart = QUnit.testStart;
 	QUnit.testStart = function(o) {
 		oldTestStart.call(QUnit, o);

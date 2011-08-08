@@ -35,11 +35,12 @@ Simply load qunit-events.js after the main qunit.js file:
 
 Supported events:
 
-- `begin`
-- `test-start`
-- `test-done`
-- `module-start`
-- `module-done`
-- `done`
+- `log`: called whenever an assertion is completed
+- `begin`: called once before running any tests
+- `test-start`: called whenever a new test batch of assertions starts running
+- `test-done`: called whenever a batch of assertions finishes running
+- `module-start`: called whenever a new module of tests starts running
+- `module-done`: called whenever a module finishes running
+- `done`: called whenever all the tests have finished running
 
 The argument sent to the event handler are exactly the same as the QUnit placeholder functions (i.e. an object with various properties). See [QUnit documentation](http://docs.jquery.com/Qunit#Integration_into_Browser_Automation_Tools) for more details.
